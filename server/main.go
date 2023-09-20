@@ -63,5 +63,6 @@ func extractHandle(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	http.HandleFunc("/", extractHandle)
+  log.Printf("hosting on %s\n", env.Port)
 	log.Fatal(http.ListenAndServe(env.Port, nil))
 }

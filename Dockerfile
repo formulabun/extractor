@@ -8,7 +8,7 @@ COPY . .
 ENV CGO_ENABLED=0
 RUN go get -d -v ./...
 
-RUN go build -buildvcs=false -a -installsuffix cgo -o extract .
+RUN go build -v -buildvcs=false -a -installsuffix cgo -o extract ./server/
 
 FROM busybox AS runtime
 WORKDIR /go/app
