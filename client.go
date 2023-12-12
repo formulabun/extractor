@@ -31,7 +31,7 @@ func (c *Client) ExtractFile(data metadatadb.File) error {
 	var err error
 	if len(c.buff) == cap(c.buff) {
 		if err = c.ExtractFiles(c.buff); err != nil {
-			return nil
+			return err
 		}
 		c.buff = c.buff[:0]
 	} else {
