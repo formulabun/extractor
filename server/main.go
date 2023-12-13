@@ -26,7 +26,7 @@ func validateInput(data *[]metadatadb.File) error {
 		if !ok {
 			contains[d] = struct{}{}
 		} else {
-			return fmt.Errorf("Duplicate entry for entry %d: %v", i, d)
+			log.Printf("Duplicate entry for entry %d: %v", i, d)
 		}
 	}
 	return nil
@@ -63,6 +63,6 @@ func extractHandle(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	http.HandleFunc("/", extractHandle)
-  log.Printf("hosting on %s\n", env.Port)
+	log.Printf("hosting on %s\n", env.Port)
 	log.Fatal(http.ListenAndServe(env.Port, nil))
 }
